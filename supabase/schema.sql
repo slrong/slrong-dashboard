@@ -42,7 +42,5 @@ alter table memos enable row level security;
 alter table posts enable row level security;
 alter table calendar_events enable row level security;
 
--- Storage: 게시판 이미지를 위한 private 버킷
-insert into storage.buckets (id, name, public)
-values ('post-images', 'post-images', false)
-on conflict (id) do nothing;
+-- Storage 버킷은 SQL Editor에서 생성이 막힐 수 있으므로 대시보드에서 만든다:
+-- Storage > New bucket > 이름 "post-images" > Public bucket 체크 해제(private)

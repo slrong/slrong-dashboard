@@ -6,6 +6,7 @@
 ## 1. Supabase 프로젝트 준비
 1. https://supabase.com 가입 → New Project 생성 (리전은 Northeast Asia/Seoul 권장)
 2. 프로젝트 대시보드 > SQL Editor 에서 [supabase/schema.sql](supabase/schema.sql) 내용을 그대로 실행
+   - Storage > New bucket 에서 `post-images` 버킷을 private으로 별도 생성 (SQL로는 생성되지 않음)
 3. 프로젝트 Settings > Data API 에서 `Project URL` 확인 → `SUPABASE_URL`
 4. 프로젝트 Settings > API Keys 에서 `service_role` 키 확인 → `SUPABASE_SERVICE_ROLE_KEY` (절대 외부 노출 금지)
 
@@ -15,6 +16,9 @@ cp .env.local.example .env.local
 node scripts/hash-password.mjs "원하는비밀번호"   # 출력된 해시를 DASHBOARD_PASSWORD_HASH 에 붙여넣기
 ```
 `SESSION_SECRET`은 32자 이상 임의 문자열로 채운다 (예: `openssl rand -base64 32`).
+
+> `.env` 파일은 `$`를 변수 참조로 해석해서 bcrypt 해시를 깨뜨릴 수 있다. `hash-password.mjs`가 로컬용(이스케이프됨)과
+> Vercel용(원본) 두 버전을 함께 출력해주니 상황에 맞는 값을 사용할 것.
 
 ## 3. 로컬 실행
 ```bash

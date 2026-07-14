@@ -44,5 +44,11 @@ http://localhost:3000 접속 → 설정한 비밀번호로 로그인.
    - `GOOGLE_CALENDAR_ICS_URL` (선택)
 4. Deploy → 발급된 `*.vercel.app` 주소로 노트북/태블릿/폰 어디서든 접속
 
+> Vercel 무료(Hobby) 플랜은 `*.vercel.app` 주소에 자체 "Vercel Authentication" 보호를 기본으로 걸어두고, 끄는 옵션은
+> Pro 플랜부터 제공한다. 그래서 각 기기에서 접속 시 먼저 Vercel 로그인 화면이 뜬다 — 프로젝트 소유자 계정으로 로그인하면
+> 자동으로 이 앱의 `/login` 화면으로 돌아온다. 기기당 최초 1회만 필요하며, 사실상 비밀번호 위에 한 겹의 보안이 더 생기는
+> 셈이라 개인용으로는 문제없다. (완전히 없애고 싶다면 무료 커스텀 도메인을 연결하면 우회된다 — Vercel Authentication은
+> `*.vercel.app` 기본 도메인에만 적용됨)
+
 ## 기술 스택
 Next.js(App Router) · Supabase(Postgres + Storage) · iron-session · Vercel 무료 티어
